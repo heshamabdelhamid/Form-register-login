@@ -10,7 +10,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['passw
     $password         = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
 
-    if (preg_match('/^[a-z0-9-_. ]*$/i', $username)) {
+    if (preg_match('/^[a-z0-9-._ ]*$/i', $username)) {
 
         if (strlen($password) >= 8 && strlen($password) <= 32) {
             if ($password === $password_confirm) {
