@@ -15,12 +15,28 @@ if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['passw
         if (strlen($password) >= 8 && strlen($password) <= 32) {
             if ($password === $password_confirm) {
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $user = $pdo->prepare('INSERT INTO users(`username`,`password`,`email`) VALUES(?,?,?)');
+                    $user = $pdo->prepare('SELECT * FROM users WHERE username = ? ');
                     $user->execute([
                         $username,
-                        password_hash($password, PASSWORD_DEFAULT, ['cost' => 11]),
-                        $email,
                     ]);
+                    if ($user->rowCount()) {
+                        die('Username is already token ');
+                    } else {
+                        $user = $pdo->prepare('SELECT * FROM users WHERE email = ? ');
+                        $user->execute([
+                            $email
+                        ]);
+                    }
+                    if ($user->rowCount()) {
+                        die('E-mail is already token ');
+                    } else {
+                        $user = $pdo->prepare('INSERT INTO users(`username`,`password`,`email`) VALUES(?,?,?)');
+                        $user->execute([
+                            $username,
+                            password_hash($password, PASSWORD_DEFAULT, ['cost' => 11]),
+                            $email,
+                        ]);
+                    }
                     if ($user->rowCount()) {
                         echo 'thanks';
                     }
