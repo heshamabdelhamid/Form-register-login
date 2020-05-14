@@ -17,7 +17,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['passw
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $user = $pdo->prepare('SELECT * FROM users WHERE username = ? ');
                     $user->execute([
-                        $username,
+                        $username
                     ]);
                     if ($user->rowCount()) {
                         die('Username is already token ');
