@@ -98,8 +98,8 @@
 					</div>
                    <form action="../control/login.php" method="POST" name="login">
                            <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                              <label for="exampleInputEmail1">UserName</label>
+                              <input type="text" name="username"  class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter UserName">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Password</label>
@@ -132,7 +132,7 @@
                         <form action="../control/register.php" method="POST" name="registration">
                            <div class="form-group">
                               <label for="exampleInputEmail1">UserName</label>
-                              <input type="text"  name="username" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Username" required>
+                              <input type="text"  name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" required>
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
@@ -144,7 +144,7 @@
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Password Confirm</label>
-                              <input type="text"  name="password_confirm" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Password Confirm" required>
+                              <input type="password"  name="password_confirm" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Password Confirm" required>
                            </div>
                            <div class="col-md-12 text-center mb-3">
                               <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Get Started For Free</button>
@@ -181,9 +181,8 @@ $("#first").fadeIn("fast");
            $("form[name='login']").validate({
              rules: {
                
-               email: {
+               username: {
                  required: true,
-                 email: true
                },
                password: {
                  required: true,
@@ -191,7 +190,7 @@ $("#first").fadeIn("fast");
                }
              },
               messages: {
-               email: "Please enter a valid email address",
+               username: "Please enter a valid Username",
               
                password: {
                  required: "Please enter password",
@@ -211,8 +210,7 @@ $(function() {
   
   $("form[name='registration']").validate({
     rules: {
-      firstname: "required",
-      lastname: "required",
+      username: "required",
       email: {
         required: true,
         email: true
@@ -224,8 +222,7 @@ $(function() {
     },
     
     messages: {
-      firstname: "Please enter your firstname",
-      lastname: "Please enter your lastname",
+      username: "Please enter your username",
       password: {
         required: "Please provide a password",
         minlength: "Your password must be at least 8 characters long"

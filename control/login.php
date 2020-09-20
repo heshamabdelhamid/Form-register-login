@@ -23,7 +23,7 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password'])) {
                 echo ' User is not Activ';
             }
         } else {
-            echo 'plaese provide a valid username';
+            echo 'plaese provide a valid pasword';
         }
     } else {
         echo 'plaese provide a valid username';
